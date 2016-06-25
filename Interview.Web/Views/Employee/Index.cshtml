@@ -1,0 +1,19 @@
+﻿@model Interview.Web.Models.EmployeesGlobalViewModel
+@{
+    ViewBag.Title = "All ";
+}
+
+<section id="input-new-emp">
+    @Html.Partial("_Add", this.Model.AddEmployee)
+</section>
+@if(TempData["Response"]!=null)
+    {
+       <div class="alert @TempData["class"]" role="alert">@TempData["Response"]</div>
+    }
+@Html.Partial("_ListOfAllEmployees", this.Model.EmployeesDetails)
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/ajax-delete.js"></script>
+}

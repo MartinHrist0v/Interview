@@ -1,0 +1,46 @@
+﻿@model Interview.Web.Models.BusinessPartnerDetailsView
+@{
+    ViewBag.Title = "Delete " + Model.Id + " " + Model.Name;
+}
+
+<h2 style="text-align:center;">Delete @Model.Name  - № @Model.Id</h2>
+
+<div id="@Model.Id">
+    <h4>Delete business partner @Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+            
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+ 
+@using (Html.BeginForm("DeletePartner", "BusinessPartner", new { id = Model.Id },FormMethod.Post,new { }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ActionLink("Back", "Index", "Home", new { }, new { @class = "btn btn-primary" })
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    @Html.ActionLink("Edit", "Edit", "BusinessPartner", new { id = Model.Id }, new { @class = "btn btn-default" })
+}

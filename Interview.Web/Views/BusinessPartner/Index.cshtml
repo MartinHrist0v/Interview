@@ -1,0 +1,21 @@
+﻿@model Interview.Web.Models.BusinessPartnerGlobalView
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.Partial("Add", Model.AddBusinessPartner)
+
+@if (TempData["Response"] != null)
+{
+    <div class="alert @TempData["class"]" role="alert">@TempData["Response"]</div>
+}
+
+@Html.Partial("_ListBusinessPartner",Model.PartnerDetails)
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/customScripts.js"></script>
+}

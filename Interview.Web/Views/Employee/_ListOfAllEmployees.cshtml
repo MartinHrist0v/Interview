@@ -1,0 +1,56 @@
+﻿
+@model ICollection<Interview.Web.Models.EmployeeDetailsViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-4 employee-box" id="@item.Id">
+        <h4>@item.Name <span class="glyphicon glyphicon-remove" style="float:right"></span></h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(i => item.Name)
+            </dt>
+
+            <dd>
+
+                @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(i => item.Position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(i => item.Position)
+            </dd>
+            @if (item.SupervisorId != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(i => item.SupervisorName)
+                </dt>
+
+                <dd>
+                    @Html.ActionLink(item.SupervisorName, "Details", new { id = item.SupervisorId })
+                </dd>
+
+            }
+            @if (item.BusinessPartnerId != null)
+            {
+
+                <dt>
+                    @Html.DisplayNameFor(i => item.BusinessPartnerName)
+                </dt>
+
+                <dd>
+                    @Html.ActionLink(item.BusinessPartnerName, "Details","BusinessPartner", new { id = item.BusinessPartnerId },null)
+                </dd>
+            }
+            
+
+        </dl>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+    </div>
+
+
+}
